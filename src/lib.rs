@@ -1,11 +1,13 @@
-use regex::Regex;
 use steel::{
-    declare_module,
+    SteelVal, declare_module,
     steel_vm::{
         ffi::{FFIModule, RegisterFFIFn},
         register_fn,
     },
 };
+
+mod checklist;
+mod table;
 
 declare_module!(create_module);
 
@@ -26,19 +28,8 @@ fn checklist_regex(text: &str) -> bool {
     re.is_match(text)
 }
 
-fn toggle_checklist(line: &str) -> String {
-    let re = Regex::new(r"- \[( |x|X)\]").unwrap();
-
-    re.replace(line, |capture: &regex::Captures| {
-        match &capture[1] {
-            " " => "- [X]",
-            "x" => "- [ ]",
-            "X" => "- [ ]",
-            _ => &capture[0],
-        }
-        .to_string()
-    })
-    .to_string()
+fn format_tables_in_buffer(buffer: &str) -> String {
+    table::format_all_tables_in_markdown(buffer)
 }
 
 fn create_link(selection: &str) -> String {
