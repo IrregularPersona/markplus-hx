@@ -647,7 +647,10 @@ name = "markplus"
 version = "0.1.0"
 dependencies = [
  "abi_stable",
+ "lazy_static",
+ "pulldown-cmark",
  "regex",
+ "ropey",
  "steel-core",
  "steel-derive",
 ]
@@ -1136,6 +1139,12 @@ dependencies = [
  "serde",
  "smallvec",
 ]
+
+[[package]]
+name = "str_indices"
+version = "0.4.4"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "d08889ec5408683408db66ad89e0e1f93dff55c73a4ccc71c427d5b277ee47e6"
 
 [[package]]
 name = "strsim"

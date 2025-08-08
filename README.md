@@ -22,14 +22,21 @@ Afterwards, you can update your `config.toml` to use the functions from the plug
 
 ```toml
 [keys.normal]
-A-l = ":checkbox_toggle"
+A-h = ":create-itemized-section!"
+A-j = ":convert-to-link!"
+A-k = ":create-codeblock!"
+A-l = ":checkbox-toggle!"
 ```
 
 ### Current Features
 
 - [X] Bindable checklisting
+- [X] Bindable codeblocks (Non-autocomplete)
+- [X] Bindable link creation
+- [X] Selection-based Itemizing
 
 ### Coming Features
+- [ ] Markdown mode(?)
 - [ ] Dynamic Tables
 - [ ] (Maybe) Folding per lists or even header?
 
