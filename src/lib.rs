@@ -15,13 +15,13 @@ fn create_module() -> FFIModule {
     let mut module = FFIModule::new(MODULE);
 
     module
-        .register_fn("bar", bar)
-        .register_fn("is-checkbox?", check_regex)
-        .register_fn("change-checkbox-state!", toggle_checklist);
+        .register_fn("is-checkbox?", checklist_regex)
+        .register_fn("change-checkbox-state!", toggle_checklist)
+        .register_fn("create-link!", create_link);
     module
 }
 
-fn check_regex(text: &str) -> bool {
+fn checklist_regex(text: &str) -> bool {
     let re = Regex::new(r"- \[( |x|X)\]").unwrap();
     re.is_match(text)
 }
@@ -41,6 +41,7 @@ fn toggle_checklist(line: &str) -> String {
     .to_string()
 }
 
-fn bar(text: &str) -> String {
-    format!("You gave: {}", text)
+fn create_link(selection: &str) -> String {
+    let trimmed = selection.trim();
+    format!("[{}]()", trimmed)
 }
